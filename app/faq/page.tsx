@@ -2,8 +2,9 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import Spinner from "@/components/Spinner";
 
 interface FAQ {
   question: string;
@@ -133,34 +134,36 @@ function FAQItem({ faq }: { faq: FAQ }) {
 
 export default function FAQ() {
   return (
-    <div className="min-h-screen py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:text-center mb-16">
-          <h2 className="text-base font-garet font-extrabold text-orange-600">
-            Support
-          </h2>
-          <p className="mt-2 text-4xl font-garet font-extrabold tracking-tight text-white sm:text-5xl">
-            Frequently Asked Questions
-          </p>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Find answers to common questions about Kairo&apos;s features,
-            roadmap, and security.
-          </p>
-        </div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto max-w-3xl"
-        >
-          <div className="divide-y divide-zinc-800 rounded-2xl bg-zinc-900/30 px-8">
-            {faqs.map((faq, index) => (
-              <FAQItem key={index} faq={faq} />
-            ))}
+    <Suspense fallback={<Spinner />}>
+      <div className="min-h-screen py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:text-center mb-16">
+            <h2 className="text-base font-garet font-extrabold text-orange-600">
+              Support
+            </h2>
+            <p className="mt-2 text-4xl font-garet font-extrabold tracking-tight text-white sm:text-5xl">
+              Frequently Asked Questions
+            </p>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Find answers to common questions about Kairo&apos;s features,
+              roadmap, and security.
+            </p>
           </div>
-        </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="mx-auto max-w-3xl"
+          >
+            <div className="divide-y divide-zinc-800 rounded-2xl bg-zinc-900/30 px-8">
+              {faqs.map((faq, index) => (
+                <FAQItem key={index} faq={faq} />
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }

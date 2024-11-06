@@ -3,13 +3,13 @@ import "./globals.css";
 import type { Metadata } from "next";
 import "react-loading-skeleton/dist/skeleton.css";
 import Navbar from "@/components/Navbar";
-import RouteTransition from "@/components/shared/ui/RouteTransition";
 import { Analytics } from "@vercel/analytics/react";
+import { Suspense } from "react";
+import Spinner from "./components/Spinner";
 
 export const metadata: Metadata = {
-  title: "Kairo | Web3 Finance Platform",
-  description:
-    "The all-in-one finance platform for DAOs, freelancers, and web3-native businesses.",
+  title: "Kairo | Web3 Invoicing & Payments",
+  description: "Streamline your Web3 business operations with Kairo",
 };
 
 export default function RootLayout({
@@ -23,8 +23,7 @@ export default function RootLayout({
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-grow ">
-            <RouteTransition />
-            {children}
+            <Suspense fallback={<Spinner />}>{children}</Suspense>
           </main>
         </div>
       </body>
