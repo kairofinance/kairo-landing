@@ -38,13 +38,18 @@ export default function BentoGrid() {
               </div>
               <div className="relative mt-auto min-h-[30rem] w-full [container-type:inline-size] max-lg:mx-auto">
                 <div className="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[4cqw] border-x-[3cqw] border-t-[3cqw] border-zinc-800 bg-[#09090B] shadow-2xl">
-                  <div className="relative w-full h-full bg-[#09090B]">
+                  <div className="relative w-full h-full bg-[#09090B] flex items-center justify-center">
                     <Image
                       src="/mobile.png"
                       alt="Kairo Mobile Interface"
                       fill
                       className="object-cover w-full bg-[#09090B]"
-                      style={{ objectPosition: "top" }}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      style={{
+                        objectPosition: "top",
+                        width: "100%",
+                        height: "100%",
+                      }}
                       priority
                     />
                   </div>

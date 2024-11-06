@@ -24,7 +24,7 @@ const footerNavigation = {
     },
     {
       name: "GitHub",
-      href: "https://github.com/kairo-labs",
+      href: "https://github.com/kairofinance",
       icon: (props: SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path

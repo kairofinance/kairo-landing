@@ -23,16 +23,6 @@ const Navbar = () => {
           {/* Navigation */}
           <div className="flex items-center gap-6">
             <Link
-              href="/"
-              className={`text-sm font-medium uppercase ${
-                pathname === "/docs"
-                  ? "text-orange-600"
-                  : "text-white hover:text-orange-600"
-              } transition-colors duration-200`}
-            >
-              Docs
-            </Link>
-            <Link
               href="/faq"
               className={`text-sm font-medium uppercase ${
                 pathname === "/faq"
