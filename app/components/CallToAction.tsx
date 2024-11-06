@@ -43,7 +43,7 @@ export default function CallToAction() {
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
-            href="/app"
+            href="https://testnet.kairo.finance"
             className="group relative inline-flex items-center uppercase text-base px-6 py-2 rounded-full font-semibold text-white overflow-hidden transition-all duration-300"
           >
             <span className="absolute inset-0 bg-white/10 group-hover:bg-orange-600/80 transition-all duration-300 ease-out"></span>
