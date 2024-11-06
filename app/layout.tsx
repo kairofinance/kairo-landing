@@ -2,8 +2,8 @@ import React from "react";
 import "./globals.css";
 import type { Metadata } from "next";
 import "react-loading-skeleton/dist/skeleton.css";
-import Navbar from "@/app/components/Navbar";
-import RouteTransition from "@/app/components/shared/ui/RouteTransition";
+import Navbar from "@/components/Navbar";
+import RouteTransition from "@/components/shared/ui/RouteTransition";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {

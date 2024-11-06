@@ -1,98 +1,10 @@
 import Hero from "./components/Hero";
 import Features from "./components/Features";
-import Stats from "./components/Stats";
 import CallToAction from "./components/CallToAction";
 import Footer from "./components/Footer";
 import BentoGrid from "./components/BentoGrid";
 import { type SVGProps } from "react";
 import PartnersScroll from "./components/PartnersScroll";
-
-type IconName =
-  | "DocumentCheck"
-  | "ChartBar"
-  | "Banknotes"
-  | "Document"
-  | "Wallet"
-  | "ArrowPath"
-  | "UserGroup"
-  | "Cog6Tooth"
-  | "CloudArrowUp";
-
-interface Feature {
-  name: string;
-  description: string;
-  iconName: IconName;
-  href?: string;
-}
-
-const primaryFeatures: Feature[] = [
-  {
-    name: "Instant Invoicing",
-    description:
-      "Generate and customize professional invoices with built-in PDF export. Track payments and manage your cash flow effortlessly.",
-    href: "#",
-    iconName: "DocumentCheck",
-  },
-  {
-    name: "Fund Tracking",
-    description:
-      "Monitor transactions and balances across multiple wallets in real-time. Get a clear view of your financial position.",
-    href: "#",
-    iconName: "ChartBar",
-  },
-  {
-    name: "Payment Management",
-    description:
-      "Streamline your payment processes with automated streaming payments and customizable vesting schedules.",
-    href: "#",
-    iconName: "Banknotes",
-  },
-];
-
-const secondaryFeatures: Feature[] = [
-  {
-    name: "PDF Export",
-    description:
-      "Generate professional invoices with customizable templates and instant PDF export.",
-    iconName: "Document",
-  },
-  {
-    name: "Multi-Wallet Support",
-    description:
-      "Connect and manage multiple wallets for comprehensive financial tracking.",
-    iconName: "Wallet",
-  },
-  {
-    name: "Real-time Updates",
-    description:
-      "Track payments and transactions in real-time across all connected wallets.",
-    iconName: "ArrowPath",
-  },
-  {
-    name: "Contact Management",
-    description:
-      "Organize and manage your business contacts for streamlined invoicing.",
-    iconName: "UserGroup",
-  },
-  {
-    name: "Custom API Access",
-    description:
-      "Integrate Kairo with your existing tools through our developer-friendly API.",
-    iconName: "Cog6Tooth",
-  },
-  {
-    name: "Cloud Sync",
-    description: "Access your financial data securely from anywhere, anytime.",
-    iconName: "CloudArrowUp",
-  },
-];
-
-const statsData = [
-  { id: 1, name: "Active Users", value: "500+" },
-  { id: 2, name: "Invoices Generated", value: "1,000+" },
-  { id: 3, name: "Total Volume", value: "$100K+" },
-  { id: 4, name: "Networks", value: "1" },
-];
 
 interface SocialIcon {
   name: string;
@@ -135,14 +47,6 @@ export default function Home() {
         <PartnersScroll />
         <BentoGrid />
         <Features />
-        {/* <Stats
-          stats={[
-            { id: 1, name: "Active Users", value: "2,000+" },
-            { id: 2, name: "Total Volume", value: "$10M+" },
-            { id: 3, name: "Transactions", value: "50,000+" },
-            { id: 4, name: "Response Time", value: "<1s" },
-          ]}
-        /> */}
         <CallToAction />
       </main>
       <Footer social={footerNavigation.social} />
