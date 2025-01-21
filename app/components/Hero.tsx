@@ -1,8 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import PrimaryButton from "./shared/ui/PrimaryButton";
+import {
+  BanknotesIcon,
+  CurrencyDollarIcon,
+  ClockIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -19,150 +24,185 @@ export default function Hero() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const textRevealVariants = {
-    hidden: {
-      y: "100%",
-    },
-    visible: {
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 80,
-        damping: 20,
-        mass: 1,
-      },
-    },
-  };
-
   return (
-    <div className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Simplified Grid Background with larger size */}
+    <div className="relative flex flex-col justify-center overflow-hidden">
+      {/* Background Effects */}
       <div className="absolute inset-0 -z-10">
-        {/* Main grid layer */}
-        <motion.div
-          className="absolute inset-0"
+        <div className="absolute inset-0 bg-[#0d0d0d]" />
+
+        {/* Animated gradient orbs */}
+        <div
+          className="absolute blur-[100px] opacity-50"
+          style={{
+            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(255,255,255,0.1), transparent 35%)`,
+            transform: `translate(${mousePosition.x * 0.1}px, ${
+              mousePosition.y * 0.1
+            }px)`,
+            transition: "transform 0.2s ease-out",
+          }}
+        />
+
+        {/* Grid overlay */}
+        <div
+          className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: `
               linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
               linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)
             `,
-            backgroundSize: "30px 30px",
+            backgroundSize: "40px 40px",
           }}
-          animate={{
-            transform: `translate(${mousePosition.x * 0.02}px, ${
-              mousePosition.y * 0.02
-            }px)`,
-          }}
-          transition={{ type: "spring", damping: 30, stiffness: 90 }}
-        />
-
-        {/* Simple spotlight effect - increased radius */}
-        <motion.div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(circle 800px at ${mousePosition.x}% ${mousePosition.y}%, rgba(234,88,12,0.03), transparent)`,
-          }}
-          transition={{ type: "spring", damping: 30, stiffness: 90 }}
         />
       </div>
 
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="max-w-[90rem] mx-auto w-full py-32"
-      >
-        <div className="flex flex-col items-center text-center">
+      <div className="max-w-[1300px] mx-auto px-6 py-24">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
           <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-2 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-start"
           >
-            <span className="w-2 h-2 rounded-full bg-orange-600 animate-pulse" />
-            <span className="text-orange-600 font-garet font-extrabold text-sm tracking-wider uppercase">
-              Now on Sepolia Testnet
-            </span>
-          </motion.div>
-
-          <motion.div variants={itemVariants} className="relative">
-            <h1 className="text-[clamp(3rem,12vw,10rem)] font-garet font-semibold tracking-tight leading-[0.9] mb-8">
-              <div className="relative overflow-hidden">
-                <motion.div variants={textRevealVariants} className="relative">
-                  <span className="inline-block">
-                    Web3
-                    <span className="inline-block text-orange-600">.</span>
-                  </span>{" "}
-                  <span className="inline-block">Finance</span>
-                </motion.div>
-              </div>
-
-              <div className="relative overflow-hidden">
-                <motion.div variants={textRevealVariants} className="relative">
-                  <span className="block text-gray-400">Simplified.</span>
-                </motion.div>
-              </div>
-            </h1>
-          </motion.div>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-xl text-gray-400 max-w-2xl mb-12"
-          >
-            The all-in-one platform for DAOs, freelancers, and web3-native
-            businesses. Manage invoices, track funds, and streamline your
-            financial operations.
-          </motion.p>
-
-          <motion.div
-            variants={itemVariants}
-            className="flex items-center gap-x-8"
-          >
-            <div className="flex items-center gap-x-4">
-              <Link
-                href="https://testnet.kairo.finance"
-                className="group relative inline-flex items-center uppercase px-3 py-[5px] rounded-full font-semibold text-black overflow-hidden transition-all duration-300"
-              >
-                <span className="absolute inset-0 bg-white group-hover:bg-orange-600/80 transition-all duration-300 ease-out"></span>
-                <span className="absolute inset-0 scale-x-0 group-hover:scale-x-100 bg-gradient-to-r from-orange-600/80 to-orange-500/80 origin-left transition-transform duration-200 ease-out"></span>
-                <span className="relative z-10 group-hover:text-black transition-colors duration-200">
-                  Launch App
-                </span>
-              </Link>
+            <div className="flex items-center gap-2 mb-6 bg-purple-500/10 rounded-full px-4 py-2">
+              <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+              <span className="text-purple-400 text-sm font-medium">
+                Powered by Polygon
+              </span>
             </div>
-            <Link
-              href="#features"
-              className="group text-base font-garet font-extrabold hover-underline"
-            >
-              Learn More
-            </Link>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+                Modern Payroll
+              </span>
+              <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40">
+                Made Simple.
+              </span>
+            </h1>
+
+            <p className="text-lg text-white/60 max-w-xl mb-8">
+              Streamline your payroll with seamless fiat-to-crypto flows,
+              automated compliance, and low-cost transactions. Perfect for
+              traditional businesses and Web3 projects alike.
+            </p>
+
+            <div className="flex items-center gap-6">
+              <PrimaryButton
+                href="/waitlist"
+                className="h-12 px-8 text-base bg-purple-500/10 hover:bg-purple-500/20 text-purple-400"
+              >
+                Join Waitlist
+              </PrimaryButton>
+              <PrimaryButton
+                href="#features"
+                variant="secondary"
+                className="h-12 px-8 text-base border-purple-500/20 hover:bg-purple-500/10"
+              >
+                Learn More
+              </PrimaryButton>
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-8">
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-white">$0.01</span>
+                <span className="text-sm text-white/60">Transaction Cost</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-white">2-5s</span>
+                <span className="text-sm text-white/60">Settlement Time</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-2xl font-bold text-white">150+</span>
+                <span className="text-sm text-white/60">Currencies</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right Column - Visual Element */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative h-[400px] hidden lg:block"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-transparent to-transparent rounded-3xl backdrop-blur-3xl border border-white/5">
+              {/* Central visualization */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                {/* Main circle with pulse effect */}
+                <div className="relative">
+                  {/* Outer rings */}
+                  <div className="absolute inset-0 -m-8">
+                    <div className="absolute inset-0 animate-[spin_10s_linear_infinite] opacity-20">
+                      <div className="absolute top-0 left-1/2 h-full w-[1px] bg-gradient-to-b from-purple-500/0 via-purple-500/50 to-purple-500/0" />
+                      <div className="absolute top-1/2 left-0 h-[1px] w-full bg-gradient-to-r from-purple-500/0 via-purple-500/50 to-purple-500/0" />
+                    </div>
+                  </div>
+
+                  {/* Main circle */}
+                  <div className="relative w-32 h-32 rounded-full border border-purple-500/20 bg-purple-500/5 flex items-center justify-center">
+                    <div className="absolute inset-0 animate-ping rounded-full bg-purple-500/20 opacity-75" />
+                    <div className="w-20 h-20 rounded-full bg-purple-500/20 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-purple-500/30" />
+                    </div>
+                  </div>
+
+                  {/* Orbiting elements */}
+                  <div className="absolute inset-[-100px]">
+                    {/* Payment nodes */}
+                    <div className="absolute inset-0 animate-[spin_20s_linear_infinite]">
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-8">
+                        <div className="w-full h-full rounded-lg bg-purple-500/10 backdrop-blur-sm flex items-center justify-center">
+                          <BanknotesIcon className="w-4 h-4 text-purple-400" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 animate-[spin_25s_linear_infinite_reverse]">
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-8">
+                        <div className="w-full h-full rounded-lg bg-purple-500/10 backdrop-blur-sm flex items-center justify-center">
+                          <CurrencyDollarIcon className="w-4 h-4 text-purple-400" />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 animate-[spin_30s_linear_infinite]">
+                      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-8 h-8">
+                        <div className="w-full h-full rounded-lg bg-purple-500/10 backdrop-blur-sm flex items-center justify-center">
+                          <ClockIcon className="w-4 h-4 text-purple-400" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Floating metrics */}
+                  <div className="absolute top-[-80px] left-[-160px] bg-purple-500/5 backdrop-blur-sm rounded-lg p-3 border border-purple-500/10">
+                    <div className="text-sm text-white/60">Settlement Time</div>
+                    <div className="text-xl font-bold text-white">Instant</div>
+                  </div>
+                  <div className="absolute bottom-[-60px] right-[-140px] bg-purple-500/5 backdrop-blur-sm rounded-lg p-3 border border-purple-500/10">
+                    <div className="text-sm text-white/60">
+                      Transaction Cost
+                    </div>
+                    <div className="text-xl font-bold text-white">
+                      Near Zero
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Background grid */}
+              <div
+                className="absolute inset-0 opacity-[0.05]"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(to right, rgb(168 85 247 / 0.5) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgb(168 85 247 / 0.5) 1px, transparent 1px)
+                  `,
+                  backgroundSize: "24px 24px",
+                }}
+              />
+            </div>
           </motion.div>
         </div>
-      </motion.div>
-
-      {/* Simple gradient overlay */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black opacity-50" />
       </div>
     </div>
   );

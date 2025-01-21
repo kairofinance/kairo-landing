@@ -22,7 +22,7 @@ const AlertMessage: React.FC<AlertMessageProps> = ({
     setIsVisible(true);
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(onDismiss, 300); // Wait for fade out animation before dismissing
+      setTimeout(onDismiss, 300);
     }, 5000);
 
     return () => clearTimeout(timer);
@@ -37,7 +37,7 @@ const AlertMessage: React.FC<AlertMessageProps> = ({
       <div
         className={`rounded-lg shadow-lg backdrop-blur-sm ${
           type === "success"
-            ? "bg-orange-600/10 text-orange-600"
+            ? "bg-purple-600/10 text-purple-400"
             : "bg-red-500/10 text-red-400"
         } p-4 flex items-center gap-3 min-w-[320px]`}
       >
@@ -53,7 +53,7 @@ const AlertMessage: React.FC<AlertMessageProps> = ({
           type="button"
           className={`flex-shrink-0 rounded-md p-1.5 transition-colors duration-200 ${
             type === "success"
-              ? "hover:bg-orange-600/20"
+              ? "hover:bg-purple-600/20"
               : "hover:bg-red-500/20"
           }`}
           onClick={() => setIsVisible(false)}

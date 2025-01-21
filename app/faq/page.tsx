@@ -15,47 +15,68 @@ const faqs: FAQ[] = [
   {
     question: "What is Kairo?",
     answer:
-      "Kairo is an all-in-one finance platform for DAOs, freelancers, and web3-native businesses. We simplify on-chain financial management with features like smart invoicing, payroll streaming, and treasury management.",
+      "Kairo is a modern payroll platform that bridges traditional and crypto payments. We make it easy for businesses to manage salaries, handle compliance, and streamline payments—whether in fiat or crypto—all while keeping costs low through Polygon's Layer 2 technology.",
   },
   {
-    question: "How does the protocol generate revenue?",
+    question: "How does Kairo handle traditional payroll?",
     answer:
-      "Kairo charges a 1% fee on token transactions processed through the platform. This fee structure ensures sustainable protocol development while maintaining competitive rates for users.",
+      "Kairo integrates seamlessly with existing banking systems, allowing employers to deposit funds in their local currency. Our platform automatically handles tax calculations, compliance requirements, and can distribute payments to employee bank accounts. We also provide detailed reporting and documentation for accounting purposes.",
   },
   {
-    question: "Does Kairo have a token?",
+    question: "Can employees choose how they receive their pay?",
     answer:
-      "We are working on a protocol token to generate additional rewards for protocol users.",
+      "Yes! Employees can choose to receive their salary in fiat currency, cryptocurrency, or a combination of both. They can also adjust their preferences at any time through their dashboard. Our platform handles all the necessary conversions automatically.",
   },
   {
-    question: "When will Kairo launch on mainnet?",
-    answer:
-      "Kairo is scheduled to launch on mainnet in Q4 2024. We're currently in testnet phase to ensure a robust and secure platform for our users.",
-  },
-  {
-    question: "Which chains will Kairo support?",
+    question: "How does Kairo ensure compliance?",
     answer: (
       <div>
-        We are actively working on multi-chain support to provide our services
-        across various networks. Follow us on{" "}
-        <Link
-          href="https://x.com/KairoFinance"
-          target="_blank"
-          className="text-orange-600 hover:text-orange-500 transition-colors"
-        >
-          X (Twitter)
-        </Link>{" "}
-        to stay updated on our latest chain integrations and announcements.
+        Our platform includes built-in compliance tools that:
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Automatically calculate and withhold appropriate taxes</li>
+          <li>Generate and store required tax documents</li>
+          <li>Track payment history and maintain audit trails</li>
+          <li>Adapt to different jurisdictional requirements</li>
+        </ul>
       </div>
     ),
+  },
+  {
+    question: "What makes Kairo's payment flows more efficient?",
+    answer:
+      "By leveraging Polygon's Layer 2 technology, we can process transactions with near-zero fees and instant settlement times. This means no more waiting for traditional bank transfers or paying high wire fees. Plus, our smart contract architecture enables features like real-time payment streams and automated vesting schedules.",
   },
   {
     question: "Is Kairo secure?",
     answer: (
       <div>
-        Kairo is currently in development and will be listed on Immunefi with a
-        bug bounty program to encourage responsible security research and
-        reporting.
+        Security is our top priority. Kairo employs multiple layers of
+        protection:
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li>Regular smart contract audits</li>
+          <li>Multi-signature wallet requirements for large transfers</li>
+          <li>Bank-grade encryption for sensitive data</li>
+          <li>Optional multi-factor authentication</li>
+        </ul>
+        We also maintain significant insurance coverage and follow industry best
+        practices for both traditional and crypto security measures.
+      </div>
+    ),
+  },
+  {
+    question: "When will Kairo launch on mainnet?",
+    answer: (
+      <div>
+        Kairo is currently in testnet phase, with mainnet launch scheduled for
+        Q4 2024. Follow us on{" "}
+        <Link
+          href="https://twitter.com/KairoFinance"
+          target="_blank"
+          className="text-purple-400 hover:text-purple-300 transition-colors"
+        >
+          Twitter
+        </Link>{" "}
+        for the latest updates and announcements.
       </div>
     ),
   },
@@ -87,17 +108,17 @@ function FAQItem({ faq }: { faq: FAQ }) {
   return (
     <motion.div
       variants={itemVariants}
-      className="group border-b border-zinc-800 last:border-0"
+      className="group border-b border-white/10 last:border-0"
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full py-6 flex items-center justify-between text-left hover:opacity-80 transition-opacity"
       >
-        <h3 className="text-lg font-garet font-extrabold text-white pr-8">
+        <h3 className="text-lg font-semibold text-white pr-8">
           {faq.question}
         </h3>
         <ChevronDownIcon
-          className={`h-6 w-6 text-orange-600 transform transition-transform duration-150 ease-out flex-shrink-0 ${
+          className={`h-6 w-6 text-purple-400 transform transition-transform duration-150 ease-out flex-shrink-0 ${
             isOpen ? "rotate-180" : ""
           }`}
         />
@@ -124,7 +145,7 @@ function FAQItem({ faq }: { faq: FAQ }) {
             }}
             className="overflow-hidden"
           >
-            <div className="text-base text-gray-300 pb-6">{faq.answer}</div>
+            <div className="text-base text-white/60 pb-6">{faq.answer}</div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -138,15 +159,16 @@ export default function FAQ() {
       <div className="min-h-screen py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center mb-16">
-            <h2 className="text-base font-garet font-extrabold text-orange-600">
-              Support
+            <h2 className="text-base font-medium text-purple-400">
+              Support Center
             </h2>
-            <p className="mt-2 text-4xl font-garet font-extrabold tracking-tight text-white sm:text-5xl">
+            <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
               Frequently Asked Questions
             </p>
-            <p className="mt-6 text-lg leading-8 text-gray-300">
-              Find answers to common questions about Kairo&apos;s features,
-              roadmap, and security.
+            <p className="mt-6 text-lg leading-8 text-white/60">
+              Learn more about how Kairo is modernizing payroll with efficient
+              payment flows, built-in compliance, and seamless fiat-crypto
+              integration.
             </p>
           </div>
 
@@ -156,7 +178,7 @@ export default function FAQ() {
             animate="visible"
             className="mx-auto max-w-3xl"
           >
-            <div className="divide-y divide-zinc-800 rounded-2xl bg-zinc-900/30 px-8">
+            <div className="divide-y divide-white/10 rounded-2xl bg-white/5 px-8">
               {faqs.map((faq, index) => (
                 <FAQItem key={index} faq={faq} />
               ))}

@@ -1,76 +1,51 @@
 "use client";
 
 import {
-  DocumentIcon,
-  WalletIcon,
-  UserGroupIcon,
-} from "@heroicons/react/20/solid";
-import {
   BanknotesIcon,
-  ChartBarIcon,
-  DocumentCheckIcon,
   ClockIcon,
   CurrencyDollarIcon,
+  ShieldCheckIcon,
+  ArrowsRightLeftIcon,
+  ChartBarIcon,
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
-import ComingSoonTag from "./ComingSoonTag";
 
-const iconMap = {
-  Document: DocumentIcon,
-  Wallet: WalletIcon,
-  UserGroup: UserGroupIcon,
-  Banknotes: BanknotesIcon,
-  ChartBar: ChartBarIcon,
-  DocumentCheck: DocumentCheckIcon,
-  Clock: ClockIcon,
-  CurrencyDollar: CurrencyDollarIcon,
-};
-
-interface Feature {
-  name: string;
-  description: string;
-  iconName: keyof typeof iconMap;
-  comingSoon?: boolean;
-}
-
-const features: Feature[] = [
+const features = [
   {
-    name: "PDF Export & Customization",
+    name: "Fiat & Crypto Support",
     description:
-      "Generate professional invoices with custom branding, logos, and instant PDF export capabilities.",
-    iconName: "Document",
+      "Deposit in dollars, pay in crypto, or vice versa. Built-in fiat on/off ramps make currency conversion seamless.",
+    icon: CurrencyDollarIcon,
   },
   {
-    name: "Token Vesting",
+    name: "Automated Compliance",
     description:
-      "Implement flexible vesting schedules for team incentives and automated token distribution.",
-    iconName: "DocumentCheck",
-    comingSoon: true,
+      "Stay compliant with automated tax reporting, payment records, and regulatory requirements across jurisdictions.",
+    icon: ShieldCheckIcon,
   },
   {
-    name: "Multi-Wallet Support",
+    name: "Real-Time Payments",
     description:
-      "Manage payments and track balances across multiple wallets with a consolidated dashboard view.",
-    iconName: "Wallet",
+      "Enable continuous payroll streams or instant transfers. Employees choose when and how they want to get paid.",
+    icon: ClockIcon,
   },
   {
-    name: "Cash Flow Analytics",
+    name: "Token Vesting & Distribution",
     description:
-      "Visualize financial trends with detailed charts and real-time token value conversions.",
-    iconName: "ChartBar",
+      "Easily manage token-based compensation with customizable vesting schedules and automated distributions.",
+    icon: BanknotesIcon,
   },
   {
-    name: "DAO Treasury Management",
+    name: "Low-Cost Transactions",
     description:
-      "Set budget limits, approval workflows, and community governance for treasury operations.",
-    iconName: "Banknotes",
-    comingSoon: true,
+      "Leverage Polygon's Layer 2 technology for near-zero transaction fees and instant settlement times.",
+    icon: ArrowsRightLeftIcon,
   },
   {
-    name: "Real-Time Monitoring",
+    name: "Payroll Analytics",
     description:
-      "Track transactions, receive threshold alerts, and monitor payment deadlines automatically.",
-    iconName: "Clock",
+      "Track spending, monitor payment flows, and gain insights into your payroll operations with detailed analytics.",
+    icon: ChartBarIcon,
   },
 ];
 
@@ -96,18 +71,20 @@ const itemVariants = {
 
 export default function Features() {
   return (
-    <div className="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
+    <div
+      className="mx-auto mt-32 max-w-[1300px] px-6 sm:mt-40 lg:px-8"
+      id="features"
+    >
       <div className="mx-auto max-w-2xl lg:text-center">
-        <h2 className="text-base/7 font-garet font-extrabold text-orange-600">
-          Powerful Features
+        <h2 className="text-base/7 font-medium text-purple-400">
+          Comprehensive Platform
         </h2>
-        <p className="mt-2 text-pretty text-4xl font-garet font-extrabold tracking-tight text-white sm:text-5xl lg:text-balance">
-          Simplifying Web3 Finance
+        <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Everything you need for modern payroll
         </p>
-        <p className="mt-6 text-lg/8 text-gray-300">
-          Kairo streamlines financial operations with comprehensive tools
-          designed specifically for DAOs, freelancers, and web3-native
-          businesses.
+        <p className="mt-6 text-lg/8 text-white/60">
+          One platform to handle all your payment needs, from traditional
+          salaries to crypto token distributions. No crypto expertise required.
         </p>
       </div>
 
@@ -120,28 +97,25 @@ export default function Features() {
       >
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => {
-            const Icon = iconMap[feature.iconName];
+            const Icon = feature.icon;
             return (
               <motion.div
                 key={feature.name}
                 variants={itemVariants}
-                className="group relative"
+                className="relative group"
               >
                 <div className="flex items-center gap-4 mb-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-600/10 group-hover:bg-orange-600/20 transition-colors duration-300">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 group-hover:bg-purple-500/20 transition-colors duration-300">
                     <Icon
-                      className="h-6 w-6 text-orange-600"
+                      className="h-6 w-6 text-purple-400"
                       aria-hidden="true"
                     />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-base font-garet font-extrabold text-white">
-                      {feature.name}
-                    </h3>
-                    {feature.comingSoon && <ComingSoonTag />}
-                  </div>
+                  <h3 className="text-base font-semibold text-white">
+                    {feature.name}
+                  </h3>
                 </div>
-                <p className="text-sm/6 text-gray-300 ml-16">
+                <p className="text-sm/6 text-white/60 ml-16">
                   {feature.description}
                 </p>
               </motion.div>

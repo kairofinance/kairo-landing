@@ -35,28 +35,29 @@ export default function CallToAction() {
 
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-balance text-4xl font-garet font-extrabold tracking-tight text-white sm:text-5xl">
-          Start Managing Your Web3 Finances Today
+          Modernize Your Payroll Without the Complexity
         </h2>
         <p className="mx-auto mt-6 max-w-xl text-lg/8 text-gray-300">
-          Join the future of decentralized finance with Kairo&apos;s
-          comprehensive suite of tools.
+          Seamlessly manage traditional and crypto payroll with built-in fiat
+          conversion, compliance tools, and low-cost payment flows powered by
+          Polygon.
         </p>
         <div className="mt-10 flex items-center justify-center gap-x-6">
           <Link
-            href="https://testnet.kairo.finance"
+            href="/waitlist"
             className="group relative inline-flex items-center uppercase text-base px-6 py-2 rounded-full font-semibold text-white overflow-hidden transition-all duration-300"
           >
-            <span className="absolute inset-0 bg-white/10 group-hover:bg-orange-600/80 transition-all duration-300 ease-out"></span>
-            <span className="absolute inset-0 scale-x-0 group-hover:scale-x-100 bg-gradient-to-r from-orange-600/80 to-orange-500/80 origin-left transition-transform duration-200 ease-out"></span>
+            <span className="absolute inset-0 bg-white/10 group-hover:bg-purple-600/80 transition-all duration-300 ease-out"></span>
+            <span className="absolute inset-0 scale-x-0 group-hover:scale-x-100 bg-gradient-to-r from-purple-600/80 to-purple-500/80 origin-left transition-transform duration-200 ease-out"></span>
             <span className="relative z-10 group-hover:text-white transition-colors duration-200">
-              Get Started
+              Join Early Access
             </span>
           </Link>
           <Link
             href="#features"
             className="group text-base font-garet font-extrabold text-white transition-colors duration-200"
           >
-            <span className="bg-left-bottom bg-gradient-to-r from-orange-600 to-orange-600 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-200 ease-out">
+            <span className="bg-left-bottom bg-gradient-to-r from-purple-400 to-purple-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-200 ease-out">
               Learn More{" "}
               <span
                 aria-hidden="true"

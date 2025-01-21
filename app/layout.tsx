@@ -70,10 +70,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="bg-[#040404] text-white antialiased">
+      <body className="bg-[#0d0d0d] text-white antialiased">
         <div className="min-h-screen flex flex-col">
           <Navbar />
-          <main className="flex-grow ">
+          <main className="flex-grow pt-20">
             <Suspense fallback={<Spinner />}>{children}</Suspense>
           </main>
         </div>

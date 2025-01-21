@@ -32,9 +32,9 @@ export default function Button({
     "rounded-full font-semibold transition-colors duration-200 flex items-center justify-center";
 
   const variants = {
-    primary: "bg-orange-600-a20 text-orange-600 hover:bg-orange-600/50",
+    primary: "bg-purple-500/10 text-purple-400 hover:bg-purple-500/20",
     secondary: "bg-kairo-black-a20 text-kairo-white hover:bg-kairo-black-a40",
-    outline: "border border-orange-600 text-orange-600 hover:bg-orange-600/10",
+    outline: "border border-purple-400 text-purple-400 hover:bg-purple-500/10",
     ghost: "text-kairo-white hover:bg-kairo-white/10",
   };
 

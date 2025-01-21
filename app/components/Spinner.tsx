@@ -10,7 +10,7 @@ interface SpinnerProps {
 const Spinner: React.FC<SpinnerProps> = ({
   inline = false,
   size = 35,
-  color = "#ea580c",
+  color = "#a78bfa",
 }) => {
   if (inline) {
     return <ScaleLoader color={color} height={size} />;
