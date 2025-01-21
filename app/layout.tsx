@@ -8,35 +8,39 @@ import { Suspense } from "react";
 import Spinner from "./components/Spinner";
 
 export const metadata: Metadata = {
-  title: "Kairo - Web3 Billing Platform",
+  title: "Kairo - Modern Payroll Platform",
   description:
-    "Secure Web3 billing with real-time insights and seamless transactions. Streamline your crypto payments and invoicing.",
+    "Streamline your payroll with seamless fiat-to-crypto flows, automated compliance, and low-cost transactions. Perfect for traditional businesses and Web3 projects.",
   keywords: [
-    "Web3 billing",
-    "crypto payments",
-    "blockchain invoicing",
-    "cryptocurrency",
-    "payment solutions",
-    "Web3 payments",
+    "crypto payroll",
+    "fiat to crypto payroll",
+    "automated payroll",
+    "Web3 payroll",
+    "compliance automation",
+    "token vesting",
+    "Polygon payments",
+    "low-cost transactions",
+    "global payroll",
+    "real-time payments",
   ],
-  authors: [{ name: "Kairo" }],
-  creator: "Kairo",
-  publisher: "Kairo",
+  authors: [{ name: "Kairo Finance" }],
+  creator: "Kairo Finance",
+  publisher: "Kairo Finance",
   icons: {
     icon: "./favicon.ico",
   },
   openGraph: {
-    title: "Kairo - Web3 Billing Platform",
+    title: "Kairo - Modern Payroll Platform",
     description:
-      "Secure Web3 billing with real-time insights and seamless transactions. Streamline your crypto payments and invoicing",
-    url: "https://kairo.finance", // Replace with your actual domain
-    siteName: "Kairo",
+      "Modernize your payroll with built-in fiat conversion, compliance tools, and low-cost payment flows powered by Polygon.",
+    url: "https://kairo.finance",
+    siteName: "Kairo Finance",
     images: [
       {
-        url: "https://kairo.finance/preview.png",
+        url: "https://kairo.finance/og.png",
         width: 1200,
         height: 630,
-        alt: "Kairo Web3 Billing Platform Preview",
+        alt: "Kairo Modern Payroll Platform",
       },
     ],
     locale: "en_US",
@@ -44,11 +48,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kairo - Web3 Billing Platform",
+    title: "Kairo - Modern Payroll Platform",
     description:
-      "Secure Web3 billing with real-time insights and seamless transactions. Streamline your crypto payments and invoicing.",
-    images: ["https://kairo.finance/preview.png"],
-    creator: "@KairoFinance", // Replace with your Twitter handle
+      "Modernize your payroll with built-in fiat conversion, compliance tools, and low-cost payment flows powered by Polygon.",
+    creator: "@KairoFinance",
   },
   robots: {
     index: true,
@@ -60,6 +63,13 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  metadataBase: new URL("https://kairo.finance"),
+  alternates: {
+    canonical: "/",
+  },
+  verification: {
+    google: "sCReyKuxA-64RTF-eRfo7P4GrVfqxpYMxP0L_gufxUQ",
   },
 };
 
@@ -77,8 +87,8 @@ export default function RootLayout({
             <Suspense fallback={<Spinner />}>{children}</Suspense>
           </main>
         </div>
+        <Analytics />
       </body>
-      <Analytics />
     </html>
   );
 }
