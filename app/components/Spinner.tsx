@@ -10,14 +10,14 @@ interface SpinnerProps {
 const Spinner: React.FC<SpinnerProps> = ({
   inline = false,
   size = 35,
-  color = "#a78bfa",
+  color = "#000000",
 }) => {
   if (inline) {
     return <ScaleLoader color={color} height={size} />;
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-15">
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-white bg-opacity-50">
       <ScaleLoader color={color} height={size} />
     </div>
   );

@@ -29,19 +29,19 @@ export default function Button({
   const isClient = useIsClient();
 
   const baseStyles =
-    "rounded-full font-semibold transition-colors duration-200 flex items-center justify-center";
+    "rounded-full font-semibold transition-colors duration-200 flex items-center justify-center text-sm";
 
   const variants = {
-    primary: "bg-purple-500/10 text-purple-400 hover:bg-purple-500/20",
-    secondary: "bg-kairo-black-a20 text-kairo-white hover:bg-kairo-black-a40",
-    outline: "border border-purple-400 text-purple-400 hover:bg-purple-500/10",
-    ghost: "text-kairo-white hover:bg-kairo-white/10",
+    primary: "bg-black text-white hover:bg-gray-900 px-3",
+    secondary: "border border-gray-200 text-gray-900 hover:bg-gray-50 px-3",
+    outline: "border border-gray-900 text-gray-900 hover:bg-gray-50 px-3",
+    ghost: "text-gray-900 hover:bg-gray-50 px-3",
   };
 
   const sizes = {
-    sm: "px-3 py-1.5 text-sm",
-    md: "px-4 py-2 text-base",
-    lg: "px-6 py-3 text-lg",
+    sm: "h-7",
+    md: "h-8",
+    lg: "h-9",
   };
 
   const disabledStyles = "opacity-50 cursor-not-allowed";

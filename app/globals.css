@@ -3,71 +3,12 @@
 @import "tailwindcss/utilities";
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/Montserrat-VariableFont_wght.ttf")
-    format("truetype-variations");
+  font-family: "Inter";
+  src: url("/fonts/Inter.ttf") format("truetype-variations");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
-
-@font-face {
-  font-family: "Montserrat";
-  src: url("/fonts/Montserrat-Italic-VariableFont_wght.ttf")
-    format("truetype-variations");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Garet-Book";
-  src: url("/fonts/Garet-Book.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Garet-Heavy";
-  src: url("/fonts/Garet-Heavy.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hagrid";
-  src: url("/fonts/Hagrid-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hagrid";
-  src: url("/fonts/Hagrid-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hagrid Text";
-  src: url("/fonts/Hagrid-Text-Extrabold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Hagrid Text";
-  src: url("/fonts/Hagrid-Text-Extrabold-Italic.ttf") format("truetype");
-  font-weight: 800;
-  font-style: italic;
-  font-display: swap;
-}
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 245, 245, 245;
@@ -75,10 +16,11 @@
 }
 
 * {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Inter", sans-serif;
+  letter-spacing: 0.025em;
   ::selection {
     color: white;
-    background: rgb(83, 38, 86);
+    background: rgb(176, 128, 180);
   }
 }
 
@@ -86,84 +28,4 @@
   .text-balance {
     text-wrap: balance;
   }
-}
-
-/* Hide the default calendar icon without disabling functionality in WebKit browsers (Chrome, Safari, Edge) */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Hide the default calendar icon in Firefox */
-input[type="date"]::-moz-calendar-picker-indicator {
-  opacity: 0;
-  cursor: pointer;
-}
-
-.react-datepicker {
-  @apply bg-kairo-black/90 border border-kairo-black-a40 !important;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.react-datepicker__header {
-  @apply bg-kairo-black-a20/50 border-kairo-black-a40 p-4 !important;
-}
-
-.react-datepicker__current-month {
-  @apply text-kairo-white font-medium mb-4 !important;
-}
-
-.react-datepicker__day-name {
-  @apply text-kairo-white/60 font-medium !important;
-  width: 2rem !important;
-  line-height: 2rem !important;
-}
-
-.react-datepicker__day {
-  @apply text-kairo-white/90 font-medium transition-colors duration-200 !important;
-  width: 2rem !important;
-  line-height: 2rem !important;
-  margin: 0.2rem !important;
-}
-
-.react-datepicker__day:hover {
-  @apply bg-orange-600 text-kairo-black rounded-md !important;
-}
-
-.react-datepicker__day--selected {
-  @apply bg-orange-600 text-kairo-black rounded-md !important;
-}
-
-.react-datepicker__day--keyboard-selected {
-  @apply bg-orange-600/20 text-orange-600 rounded-md !important;
-}
-
-.react-datepicker__day--disabled {
-  @apply text-kairo-white/20 hover:bg-transparent hover:text-kairo-white/20 cursor-not-allowed !important;
-}
-
-.react-datepicker__navigation-icon::before {
-  @apply border-kairo-white/60 !important;
-}
-
-.react-datepicker__navigation:hover *::before {
-  @apply border-orange-600 !important;
-}
-
-.react-datepicker-popper[data-placement^="bottom"]
-  .react-datepicker__triangle::before,
-.react-datepicker-popper[data-placement^="bottom"]
-  .react-datepicker__triangle::after {
-  @apply border-b-kairo-black-a20 !important;
-}
-
-/* Add backdrop blur to the calendar */
-.react-datepicker-popper {
-  backdrop-filter: blur(8px);
-}
-
-/* Dinamo-style hover effect */
-.hover-underline {
-  @apply relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 after:bg-current 
-    after:transition-all after:duration-300 hover:after:w-full;
 }

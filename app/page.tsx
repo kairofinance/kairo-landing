@@ -3,6 +3,7 @@ import Features from "./components/Features";
 import CallToAction from "./components/CallToAction";
 import Footer from "./components/Footer";
 import BentoGrid from "./components/BentoGrid";
+import SectionVisual from "./components/SectionVisual";
 import { type SVGProps } from "react";
 
 interface SocialIcon {
@@ -43,8 +44,11 @@ export default function Home() {
     <div>
       <main>
         <Hero />
+        <SectionVisual />
         <BentoGrid />
+        <SectionVisual />
         <Features />
+        <SectionVisual />
         <CallToAction />
       </main>
       <Footer social={footerNavigation.social} />
