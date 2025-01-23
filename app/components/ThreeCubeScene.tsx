@@ -18,22 +18,22 @@ export default function ThreeCubeScene() {
   useEffect(() => {
     if (!mountRef.current) return;
 
+    // Store ref value in a variable for cleanup
+    const currentMount = mountRef.current;
+
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       60,
-      mountRef.current.clientWidth / mountRef.current.clientHeight,
+      currentMount.clientWidth / currentMount.clientHeight,
       0.1,
       1000
     );
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
-    renderer.setSize(
-      mountRef.current.clientWidth,
-      mountRef.current.clientHeight
-    );
+    renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
     renderer.setClearColor(0x000000, 0);
-    mountRef.current.appendChild(renderer.domElement);
+    currentMount.appendChild(renderer.domElement);
 
     // Create cubes
     const cubes: THREE.LineSegments[] = [];
@@ -90,14 +90,14 @@ export default function ThreeCubeScene() {
     const raycaster = new THREE.Raycaster();
 
     const onMouseMove = (event: MouseEvent) => {
-      if (!mountRef.current) return;
+      if (!currentMount) return;
 
-      const rect = mountRef.current.getBoundingClientRect();
+      const rect = currentMount.getBoundingClientRect();
       mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
       mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
     };
 
-    mountRef.current.addEventListener("mousemove", onMouseMove);
+    currentMount.addEventListener("mousemove", onMouseMove);
 
     // Animation
     let frameId: number;
@@ -166,15 +166,11 @@ export default function ThreeCubeScene() {
 
     // Handle resize
     const handleResize = () => {
-      if (!mountRef.current) return;
+      if (!currentMount) return;
 
-      camera.aspect =
-        mountRef.current.clientWidth / mountRef.current.clientHeight;
+      camera.aspect = currentMount.clientWidth / currentMount.clientHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(
-        mountRef.current.clientWidth,
-        mountRef.current.clientHeight
-      );
+      renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
     };
 
     window.addEventListener("resize", handleResize);
@@ -182,10 +178,9 @@ export default function ThreeCubeScene() {
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      mountRef.current?.removeEventListener("mousemove", onMouseMove);
+      currentMount.removeEventListener("mousemove", onMouseMove);
       cancelAnimationFrame(frameId);
-      if (!mountRef.current) return;
-      mountRef.current.removeChild(renderer.domElement);
+      currentMount.removeChild(renderer.domElement);
       boxGeometry.dispose();
       edgesGeometry.dispose();
       cubes.forEach((cube) => {

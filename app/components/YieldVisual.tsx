@@ -75,7 +75,6 @@ export default function YieldVisual() {
           const distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < connectionDistance) {
-            const opacity = 1 - distance / connectionDistance;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
           }

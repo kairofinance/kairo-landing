@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import PrimaryButton from "./shared/ui/PrimaryButton";
 import SleekVisual from "./SleekVisual";
 import Link from "next/link";
 
