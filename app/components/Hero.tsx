@@ -18,13 +18,13 @@ const stats = [
 
 export default function Hero() {
   return (
-    <section className="relative py-20 sm:py-32 mt-12">
+    <section className="relative py-12 sm:py-20 mt-8 sm:mt-12">
       {/* Subtle gradient background */}
       <div className="absolute inset-0 -z-10" />
 
       <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
         {/* Main Content */}
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           <div className="space-y-4">
             <motion.h1
               {...fadeIn}
@@ -79,11 +79,11 @@ export default function Hero() {
             ))}
           </motion.div>
 
-          {/* Flow Chart - Updated height and padding for mobile */}
+          {/* Flow Chart */}
           <motion.div
             {...fadeIn}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="relative h-[400px] sm:h-[450px] md:h-[500px] rounded-lg overflow-hidden bg-white/30 backdrop-blur-sm ring-1 ring-gray-200 px-2 sm:px-4"
+            className="relative w-full aspect-[16/9] sm:aspect-[2/1] max-h-[500px] rounded-lg overflow-hidden bg-white/30 backdrop-blur-sm ring-1 ring-gray-200"
           >
             <FlowChart />
           </motion.div>

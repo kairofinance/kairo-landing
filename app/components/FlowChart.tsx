@@ -15,12 +15,18 @@ export default function FlowChart() {
     const setCanvasSize = () => {
       const rect = canvas.parentElement?.getBoundingClientRect();
       if (!rect) return;
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
-      canvas.style.width = `${rect.width}px`;
-      canvas.style.height = `${rect.height}px`;
-      ctx.scale(dpr, dpr);
+
+      // Get the container's actual size in CSS pixels
+      const containerWidth = rect.width;
+      const containerHeight = rect.height;
+
+      // Set the canvas's coordinate space to match the container's CSS pixels
+      canvas.width = containerWidth;
+      canvas.height = containerHeight;
+
+      // Set the display size to match
+      canvas.style.width = `${containerWidth}px`;
+      canvas.style.height = `${containerHeight}px`;
     };
 
     setCanvasSize();
@@ -32,79 +38,105 @@ export default function FlowChart() {
       gray: { light: "#F3F4F6", main: "#6B7280", dark: "#374151" },
     };
 
-    // Define employee positions - adjusted for better mobile layout
-    const getEmployeePositions = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        // Mobile - moved employees closer to center and adjusted vertical spacing
-        return [
-          { x: 0.85, y: 0.25 },
-          { x: 0.85, y: 0.42 },
-          { x: 0.85, y: 0.58 },
-          { x: 0.85, y: 0.75 },
-        ];
-      } else if (width < 1024) {
-        // Tablet - slightly adjusted positions
-        return [
-          { x: 0.8, y: 0.2 },
-          { x: 0.8, y: 0.4 },
-          { x: 0.8, y: 0.6 },
-          { x: 0.8, y: 0.8 },
-        ];
-      }
-      // Desktop - unchanged
-      return [
-        { x: 0.8, y: 0.2 },
-        { x: 0.8, y: 0.4 },
-        { x: 0.8, y: 0.6 },
-        { x: 0.8, y: 0.8 },
-      ];
-    };
-
-    // Get node positions based on screen size - adjusted for mobile
-    const getNodePositions = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        return {
-          employer: 0.15, // Moved employer node more to the left
-          pool: 0.5, // Kept pool in center
-        };
-      } else if (width < 1024) {
-        return {
-          employer: 0.2,
-          pool: 0.5,
-        };
-      }
-      return {
-        employer: 0.2,
-        pool: 0.5,
-      };
-    };
-
-    // Get node and font sizes based on screen size - adjusted for mobile
+    // Get node and font sizes based on screen size
     const getScaledSizes = () => {
-      const width = window.innerWidth;
-      if (width < 640) {
-        return {
-          nodeRadius: 15, // Smaller nodes on mobile
-          fontSize: 10, // Smaller font
-          curveOffset: 12, // Reduced curve offset
-          glowRadius: 20, // Smaller glow
-        };
-      } else if (width < 1024) {
-        return {
-          nodeRadius: 20,
-          fontSize: 12,
-          curveOffset: 20,
-          glowRadius: 25,
-        };
-      }
-      return {
+      // Always start with desktop sizes for initial render
+      const defaultSizes = {
         nodeRadius: 25,
         fontSize: 14,
         curveOffset: 30,
         glowRadius: 35,
       };
+
+      // Only adjust sizes after initial render
+      if (typeof window === "undefined") return defaultSizes;
+
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      if (width < 640) {
+        return {
+          nodeRadius: Math.min(10, height * 0.02),
+          fontSize: Math.min(8, height * 0.016),
+          curveOffset: Math.min(15, width * 0.04),
+          glowRadius: Math.min(14, height * 0.025),
+        };
+      } else if (width < 1024) {
+        return {
+          nodeRadius: Math.min(16, height * 0.025),
+          fontSize: Math.min(10, height * 0.018),
+          curveOffset: Math.min(22, width * 0.035),
+          glowRadius: Math.min(22, height * 0.03),
+        };
+      }
+      return defaultSizes;
+    };
+
+    // Get node positions based on screen size
+    const getNodePositions = () => {
+      // Always start with desktop positions for initial render
+      const defaultPositions = {
+        employer: 0.1,
+        pool: 0.5,
+      };
+
+      // Only adjust positions after initial render
+      if (typeof window === "undefined") return defaultPositions;
+
+      const width = window.innerWidth;
+      if (width < 640) {
+        return {
+          employer: 0.15,
+          pool: 0.5,
+        };
+      } else if (width < 1024) {
+        return {
+          employer: 0.12,
+          pool: 0.5,
+        };
+      }
+      return defaultPositions;
+    };
+
+    // Define employee positions
+    const getEmployeePositions = () => {
+      // Always start with desktop positions for initial render
+      if (typeof window === "undefined") {
+        return [
+          { x: 0.9, y: 0.15 },
+          { x: 0.9, y: 0.38 },
+          { x: 0.9, y: 0.61 },
+          { x: 0.9, y: 0.85 },
+        ];
+      }
+
+      const width = window.innerWidth;
+      const height = canvas.height;
+      const verticalPadding = height * 0.15;
+      const usableHeight = height - verticalPadding * 2;
+      const spacing = usableHeight / 3;
+
+      if (width < 640) {
+        return [
+          { x: 0.85, y: verticalPadding / height + (spacing * 0) / height },
+          { x: 0.85, y: verticalPadding / height + (spacing * 1) / height },
+          { x: 0.85, y: verticalPadding / height + (spacing * 2) / height },
+          { x: 0.85, y: verticalPadding / height + (spacing * 3) / height },
+        ];
+      } else if (width < 1024) {
+        return [
+          { x: 0.88, y: verticalPadding / height + (spacing * 0) / height },
+          { x: 0.88, y: verticalPadding / height + (spacing * 1) / height },
+          { x: 0.88, y: verticalPadding / height + (spacing * 2) / height },
+          { x: 0.88, y: verticalPadding / height + (spacing * 3) / height },
+        ];
+      }
+      return [
+        { x: 0.9, y: verticalPadding / height + (spacing * 0) / height },
+        { x: 0.9, y: verticalPadding / height + (spacing * 1) / height },
+        { x: 0.9, y: verticalPadding / height + (spacing * 2) / height },
+        { x: 0.9, y: verticalPadding / height + (spacing * 3) / height },
+      ];
     };
 
     let employeePositions = getEmployeePositions();
@@ -449,8 +481,12 @@ export default function FlowChart() {
   }, []);
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
-      <canvas ref={canvasRef} className="w-full h-full" />
+    <div className="w-full h-full">
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full"
+        style={{ touchAction: "none" }}
+      />
     </div>
   );
 }
