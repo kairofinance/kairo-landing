@@ -79,7 +79,7 @@ export default function Features() {
           <div className="mx-auto max-w-[1100px] px-4 sm:px-6">
             {/* Header Section */}
             <div className="max-w-2xl text-center sm:text-left">
-              <h2 className="text-base font-medium text-gray-900">
+              <h2 className="text-base font-medium text-purple-600">
                 Comprehensive Platform
               </h2>
               <p className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
@@ -92,14 +92,8 @@ export default function Features() {
             </div>
 
             {/* Features List */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mt-8 grid gap-4 sm:grid-cols-2"
-            >
-              {features.map((feature) => (
+            <motion.div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {features.map((feature, index) => (
                 <motion.div
                   key={feature.name}
                   variants={itemVariants}
@@ -107,10 +101,20 @@ export default function Features() {
                 >
                   <div className="rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:shadow-lg">
                     <div className="flex items-center gap-4">
-                      <div className="rounded-xl bg-gray-100 p-2.5 group-hover:bg-gray-900 group-hover:text-white transition-colors duration-200">
+                      <div
+                        className={`rounded-xl bg-gray-100 p-2.5 ${
+                          index === 0 || index === 3 ? "text-purple-600" : ""
+                        }`}
+                      >
                         <feature.icon className="h-6 w-6" />
                       </div>
-                      <h3 className="text-base font-semibold text-gray-900">
+                      <h3
+                        className={`text-base font-semibold ${
+                          index === 0 || index === 3
+                            ? "text-purple-600"
+                            : "text-gray-900"
+                        }`}
+                      >
                         {feature.name}
                       </h3>
                     </div>

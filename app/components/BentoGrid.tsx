@@ -14,7 +14,7 @@ export default function BentoGrid() {
     <div className="relative py-12">
       <div className="mx-auto max-w-[1100px] px-4 sm:px-6">
         <div className="max-w-2xl text-center sm:text-left">
-          <h2 className="text-base font-medium text-gray-900">
+          <h2 className="text-base font-medium text-purple-600">
             Built for Modern Business
           </h2>
           <p className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
@@ -23,7 +23,7 @@ export default function BentoGrid() {
         </div>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Yield Generation Panel - Main Feature */}
+          {/* Yield Generation Panel */}
           <motion.div
             className="relative lg:col-span-2"
             initial={{ opacity: 0, y: 20 }}
@@ -32,10 +32,10 @@ export default function BentoGrid() {
             transition={{ duration: 0.5 }}
           >
             <div className="rounded-2xl bg-black p-6 sm:p-8">
-              <div className="flex flex-col">
+              <div className="flex flex-col relative z-10">
                 <div className="flex items-center gap-4">
-                  <div className="rounded-xl bg-white/10 p-2.5">
-                    <ArrowTrendingUpIcon className="h-6 w-6 text-white" />
+                  <div className="rounded-xl bg-purple-500/20 p-2.5">
+                    <ArrowTrendingUpIcon className="h-6 w-6 text-purple-400" />
                   </div>
                   <h3 className="text-lg font-semibold text-white">
                     Earn While You Wait
@@ -76,28 +76,28 @@ export default function BentoGrid() {
               description:
                 "Enable continuous payroll streams or instant transfers.",
               icon: ClockIcon,
-              color: "bg-gray-900",
+              highlight: true,
             },
             {
               title: "Automated Compliance",
               description:
                 "Stay compliant with automated tax reporting and records.",
               icon: DocumentCheckIcon,
-              color: "bg-gray-900",
+              highlight: false,
             },
             {
               title: "Token Distribution",
               description:
                 "Manage token-based compensation and vesting schedules.",
               icon: BanknotesIcon,
-              color: "bg-gray-900",
+              highlight: false,
             },
             {
               title: "Analytics Dashboard",
               description:
                 "Track spending and monitor payment flows in real-time.",
               icon: ChartBarIcon,
-              color: "bg-gray-900",
+              highlight: false,
             },
           ].map((feature, i) => (
             <motion.div
@@ -110,10 +110,18 @@ export default function BentoGrid() {
             >
               <div className="rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:shadow-lg">
                 <div className="flex items-center gap-4">
-                  <div className="rounded-xl bg-gray-100 p-2.5 group-hover:bg-gray-900 group-hover:text-white transition-colors duration-200">
+                  <div
+                    className={`rounded-xl bg-gray-100 p-2.5 ${
+                      feature.highlight ? "text-purple-600" : ""
+                    }`}
+                  >
                     <feature.icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-base font-semibold text-gray-900">
+                  <h3
+                    className={`text-base font-semibold ${
+                      feature.highlight ? "text-purple-600" : "text-gray-900"
+                    }`}
+                  >
                     {feature.title}
                   </h3>
                 </div>

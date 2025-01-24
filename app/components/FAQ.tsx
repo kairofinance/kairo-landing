@@ -43,7 +43,7 @@ export default function FAQ() {
   return (
     <div className="w-full">
       <div className="max-w-2xl">
-        <h2 className="text-base/7 font-medium text-gray-900">
+        <h2 className="text-base/7 font-medium text-purple-600">
           Common Questions
         </h2>
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -64,23 +64,27 @@ export default function FAQ() {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             className={`${
-              index % 2 === 0 ? "bg-white" : "bg-gray-50"
-            } border-b border-gray-200 last:border-0`}
+              index % 2 === 0
+                ? "bg-white hover:bg-purple-50/50"
+                : "bg-gray-50 hover:bg-purple-50/30"
+            } border-b border-gray-200 last:border-0 transition-colors duration-200`}
           >
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
               className="flex w-full items-center justify-between py-6 px-6 text-left"
             >
-              <span className="text-lg font-semibold text-gray-900">
+              <span
+                className={`text-lg font-semibold ${
+                  openIndex === index ? "text-purple-600" : "text-gray-900"
+                } transition-colors duration-200`}
+              >
                 {faq.question}
               </span>
-              <motion.div
-                initial={false}
-                animate={{ rotate: openIndex === index ? 180 : 0 }}
-                transition={{ duration: 0.2, ease: "easeInOut" }}
-              >
-                <ChevronDownIcon className="h-5 w-5 text-gray-500 flex-shrink-0" />
-              </motion.div>
+              <ChevronDownIcon
+                className={`h-5 w-5 flex-shrink-0 ${
+                  openIndex === index ? "text-purple-600" : "text-gray-500"
+                }`}
+              />
             </button>
             <AnimatePresence initial={false}>
               {openIndex === index && (

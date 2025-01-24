@@ -83,7 +83,7 @@ export default function Hero() {
           <motion.div
             {...fadeIn}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="relative w-full aspect-[16/9] sm:aspect-[2/1] max-h-[500px] rounded-lg overflow-hidden bg-white/30 backdrop-blur-sm ring-1 ring-gray-200"
+            className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-lg overflow-hidden bg-white/30 backdrop-blur-sm ring-1 ring-gray-200"
           >
             <FlowChart />
           </motion.div>

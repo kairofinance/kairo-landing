@@ -12,26 +12,6 @@ export default function FlowChart() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const setCanvasSize = () => {
-      const rect = canvas.parentElement?.getBoundingClientRect();
-      if (!rect) return;
-
-      // Get the container's actual size in CSS pixels
-      const containerWidth = rect.width;
-      const containerHeight = rect.height;
-
-      // Set the canvas's coordinate space to match the container's CSS pixels
-      canvas.width = containerWidth;
-      canvas.height = containerHeight;
-
-      // Set the display size to match
-      canvas.style.width = `${containerWidth}px`;
-      canvas.style.height = `${containerHeight}px`;
-    };
-
-    setCanvasSize();
-    window.addEventListener("resize", setCanvasSize);
-
     // Color palette - simplified and more minimal
     const colors = {
       purple: { light: "#F3E8FF", main: "#A855F7", dark: "#7E22CE" },
@@ -139,16 +119,38 @@ export default function FlowChart() {
       ];
     };
 
-    let employeePositions = getEmployeePositions();
-    let nodePositions = getNodePositions();
+    // Initialize positions
+    let employeePositions: Array<{ x: number; y: number }> =
+      getEmployeePositions();
+    let nodePositions: { employer: number; pool: number } = getNodePositions();
 
-    // Update positions on resize
-    const handleResize = () => {
+    const setCanvasSize = () => {
+      const rect = canvas.parentElement?.getBoundingClientRect();
+      if (!rect) return;
+
+      // Get the actual display size
+      const displayWidth = Math.floor(rect.width);
+      const displayHeight = Math.floor(rect.height);
+
+      // Set display size
+      canvas.style.width = `${displayWidth}px`;
+      canvas.style.height = `${displayHeight}px`;
+
+      // Set actual size in memory (scaled for retina)
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = displayWidth;
+      canvas.height = displayHeight;
+
+      // Normalize coordinate system to use CSS pixels
+      ctx.scale(1, 1);
+
+      // Update positions and sizes based on new dimensions
       employeePositions = getEmployeePositions();
       nodePositions = getNodePositions();
     };
 
-    window.addEventListener("resize", handleResize);
+    setCanvasSize();
+    window.addEventListener("resize", setCanvasSize);
 
     // Add a flag to track if first deposit has reached pool
     let hasFirstDeposit = false;
@@ -475,7 +477,6 @@ export default function FlowChart() {
 
     return () => {
       window.removeEventListener("resize", setCanvasSize);
-      window.removeEventListener("resize", handleResize);
       clearInterval(yieldInterval);
     };
   }, []);
