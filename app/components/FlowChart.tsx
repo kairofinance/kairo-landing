@@ -32,27 +32,27 @@ export default function FlowChart() {
       gray: { light: "#F3F4F6", main: "#6B7280", dark: "#374151" },
     };
 
-    // Define employee positions - adjusted for better responsive layout
+    // Define employee positions - adjusted for better mobile layout
     const getEmployeePositions = () => {
       const width = window.innerWidth;
       if (width < 640) {
-        // Mobile
+        // Mobile - moved employees closer to center and adjusted vertical spacing
         return [
-          { x: 0.7, y: 0.2 },
-          { x: 0.7, y: 0.4 },
-          { x: 0.7, y: 0.6 },
-          { x: 0.7, y: 0.8 },
+          { x: 0.85, y: 0.25 },
+          { x: 0.85, y: 0.42 },
+          { x: 0.85, y: 0.58 },
+          { x: 0.85, y: 0.75 },
         ];
       } else if (width < 1024) {
-        // Tablet
+        // Tablet - slightly adjusted positions
         return [
-          { x: 0.75, y: 0.2 },
-          { x: 0.75, y: 0.4 },
-          { x: 0.75, y: 0.6 },
-          { x: 0.75, y: 0.8 },
+          { x: 0.8, y: 0.2 },
+          { x: 0.8, y: 0.4 },
+          { x: 0.8, y: 0.6 },
+          { x: 0.8, y: 0.8 },
         ];
       }
-      // Desktop
+      // Desktop - unchanged
       return [
         { x: 0.8, y: 0.2 },
         { x: 0.8, y: 0.4 },
@@ -61,17 +61,17 @@ export default function FlowChart() {
       ];
     };
 
-    // Get node positions based on screen size
+    // Get node positions based on screen size - adjusted for mobile
     const getNodePositions = () => {
       const width = window.innerWidth;
       if (width < 640) {
         return {
-          employer: 0.3,
-          pool: 0.5,
+          employer: 0.15, // Moved employer node more to the left
+          pool: 0.5, // Kept pool in center
         };
       } else if (width < 1024) {
         return {
-          employer: 0.25,
+          employer: 0.2,
           pool: 0.5,
         };
       }
@@ -81,22 +81,22 @@ export default function FlowChart() {
       };
     };
 
-    // Get node and font sizes based on screen size
+    // Get node and font sizes based on screen size - adjusted for mobile
     const getScaledSizes = () => {
       const width = window.innerWidth;
       if (width < 640) {
         return {
-          nodeRadius: 20,
-          fontSize: 11,
-          curveOffset: 15,
-          glowRadius: 25,
+          nodeRadius: 15, // Smaller nodes on mobile
+          fontSize: 10, // Smaller font
+          curveOffset: 12, // Reduced curve offset
+          glowRadius: 20, // Smaller glow
         };
       } else if (width < 1024) {
         return {
-          nodeRadius: 22,
+          nodeRadius: 20,
           fontSize: 12,
-          curveOffset: 25,
-          glowRadius: 30,
+          curveOffset: 20,
+          glowRadius: 25,
         };
       }
       return {

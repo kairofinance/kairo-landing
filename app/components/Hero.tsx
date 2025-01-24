@@ -79,11 +79,11 @@ export default function Hero() {
             ))}
           </motion.div>
 
-          {/* Flow Chart - Updated height classes */}
+          {/* Flow Chart - Updated height and padding for mobile */}
           <motion.div
             {...fadeIn}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="relative h-[300px] sm:h-[400px] md:h-[450px] rounded-lg overflow-hidden bg-white/30 backdrop-blur-sm ring-1 ring-gray-200"
+            className="relative h-[400px] sm:h-[450px] md:h-[500px] rounded-lg overflow-hidden bg-white/30 backdrop-blur-sm ring-1 ring-gray-200 px-2 sm:px-4"
           >
             <FlowChart />
           </motion.div>
