@@ -17,7 +17,7 @@ export default function Footer({ social }: FooterProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-purple-50 via-white to-transparent" />
       </div>
 
-      <div className="mx-auto max-w-[1000px] px-6 py-12 md:flex md:items-center md:justify-between">
+      <div className="mx-auto max-w-[1100px] px-6 py-12 md:flex md:items-center md:justify-between">
         <div className="flex flex-col md:flex-row md:items-center md:gap-x-12">
           <div className="flex justify-center space-x-6 md:order-2">
             {social.map((item) => (

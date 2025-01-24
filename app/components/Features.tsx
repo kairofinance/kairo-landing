@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 import FAQ from "./FAQ";
+import SectionVisual from "./SectionVisual";
 
 const features = [
   {
@@ -70,98 +71,69 @@ const itemVariants = {
   },
 };
 
-const iconVariants = {
-  initial: { y: 0 },
-  hover: {
-    y: -3,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut",
-      type: "spring",
-      stiffness: 300,
-    },
-  },
-};
-
 export default function Features() {
   return (
-    <div className="w-full bg-white" id="features">
-      <div className="mx-auto max-w-[1000px] px-6 py-32 sm:py-40">
-        {/* Header Section */}
+    <>
+      <div className="relative mx-auto max-w-[1100px] px-6 py-12">
         <div className="w-full">
-          <h2 className="text-base/7 font-medium text-purple-600">
-            Comprehensive Platform
-          </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            Everything you need for modern operations
-          </p>
-          <p className="mt-6 text-lg/8 text-gray-600 max-w-2xl">
-            One platform to handle all your payment needs, from traditional
-            transactions to crypto distributions. No expertise required.
-          </p>
-        </div>
+          <div className="mx-auto max-w-[1100px] px-4 sm:px-6">
+            {/* Header Section */}
+            <div className="max-w-2xl text-center sm:text-left">
+              <h2 className="text-base font-medium text-gray-900">
+                Comprehensive Platform
+              </h2>
+              <p className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
+                Everything you need for modern operations
+              </p>
+              <p className="mt-6 text-base text-gray-600 max-w-2xl">
+                One platform to handle all your payment needs, from traditional
+                transactions to crypto distributions. No expertise required.
+              </p>
+            </div>
 
-        {/* Features List */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mt-16 w-full max-w-4xl mx-auto"
-        >
-          <div className="space-y-4">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
+            {/* Features List */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="mt-8 grid gap-4 sm:grid-cols-2"
+            >
+              {features.map((feature) => (
                 <motion.div
                   key={feature.name}
                   variants={itemVariants}
-                  className={`group rounded-2xl ${
-                    index % 2 === 0 ? "bg-white" : "bg-purple-50"
-                  } p-6`}
+                  className="group relative"
                 >
-                  <div className="flex items-start">
-                    {/* Left side - Icon and Title */}
-                    <div className="w-72 shrink-0 flex items-center gap-4">
-                      <motion.div
-                        initial="initial"
-                        whileHover="hover"
-                        variants={iconVariants}
-                        className="flex-shrink-0"
-                      >
-                        <Icon
-                          className="h-6 w-6 text-purple-600"
-                          aria-hidden="true"
-                        />
-                      </motion.div>
-                      <h3 className="text-lg font-semibold text-gray-900">
+                  <div className="rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:shadow-lg">
+                    <div className="flex items-center gap-4">
+                      <div className="rounded-xl bg-gray-100 p-2.5 group-hover:bg-gray-900 group-hover:text-white transition-colors duration-200">
+                        <feature.icon className="h-6 w-6" />
+                      </div>
+                      <h3 className="text-base font-semibold text-gray-900">
                         {feature.name}
                       </h3>
                     </div>
-
-                    {/* Separator line */}
-                    <div className="mx-8 mt-5 w-8 border-t border-gray-200" />
-
-                    {/* Right side - Description */}
-                    <div className="flex-1 pt-1">
-                      <p className="text-base text-gray-600">
-                        {feature.description}
-                      </p>
-                    </div>
+                    <p className="mt-4 text-sm text-gray-600">
+                      {feature.description}
+                    </p>
                   </div>
                 </motion.div>
-              );
-            })}
-          </div>
-        </motion.div>
+              ))}
+            </motion.div>
 
-        {/* FAQ Section - removed background and adjusted spacing */}
-        <div className="mt-32">
-          <div className="mx-auto">
-            <FAQ />
+            <div className="mt-12" />
+            <SectionVisual />
+
+            {/* FAQ Section */}
+            <div className="mt-12">
+              <div className="mx-auto">
+                <FAQ />
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -72,7 +72,7 @@ export default function Waitlist() {
 
   return (
     <div className="min-h-screen py-24 sm:py-32">
-      <div className="mx-auto max-w-[1000px] px-6 lg:px-8">
+      <div className="mx-auto max-w-[1100px] px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center mb-16">
           <h2 className="text-base font-medium text-gray-900">Early Access</h2>
           <p className="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">

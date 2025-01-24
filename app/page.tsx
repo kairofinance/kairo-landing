@@ -48,7 +48,6 @@ export default function Home() {
         <BentoGrid />
         <SectionVisual />
         <Features />
-        <SectionVisual />
         <CallToAction />
       </main>
       <Footer social={footerNavigation.social} />

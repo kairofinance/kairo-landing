@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CallToAction() {
   return (
-    <div className="relative isolate mt-4 px-6 py-32 sm:py-40 lg:px-8">
+    <div className="relative isolate mt-12 px-6 py-32 sm:py-40 lg:px-8 ">
       <svg
         aria-hidden="true"
         className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"

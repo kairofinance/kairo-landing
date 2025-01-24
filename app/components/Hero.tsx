@@ -1,122 +1,94 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
-import SleekVisual from "./SleekVisual";
-import Link from "next/link";
+import FlowChart from "./FlowChart";
+import PrimaryButton from "./shared/ui/PrimaryButton";
+import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6 },
 };
 
 const stats = [
-  { value: "5-12%", label: "Annual Yield" },
-  { value: "2-5s", label: "Settlement" },
+  { value: "5-12%", label: "Potential Yield" },
+  { value: "2-5s", label: "Settlement Speed" },
   { value: "$0.01", label: "Per Transaction" },
 ];
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
-    <div className="relative py-8">
-      {/* Interactive Background */}
-      <motion.div
-        className="absolute inset-0 -z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(0,0,0,0.03), transparent 50%)`,
-          }}
-        />
-      </motion.div>
+    <section className="relative py-20 sm:py-32 mt-12">
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0 -z-10" />
 
-      <div className="max-w-[1000px] mx-auto px-6">
-        <div className="space-y-8">
-          {/* Main Content */}
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6">
+        {/* Main Content */}
+        <div className="space-y-12">
           <div className="space-y-4">
             <motion.h1
               {...fadeIn}
-              transition={{ delay: 0.1 }}
-              className="text-3xl md:text-5xl font-bold tracking-tight text-gray-900 leading-tight max-w-3xl"
+              transition={{ duration: 0.5 }}
+              className="text-4xl sm:text-5xl font-semibold text-gray-900 tracking-tight"
             >
-              Unlock the future of financial operations.{" "}
-              <span className="text-purple-600">Earn while you pay.</span>
+              Unlock the future of financial operations.
             </motion.h1>
+
             <motion.p
               {...fadeIn}
-              transition={{ delay: 0.2 }}
-              className="text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-lg text-gray-600 max-w-2xl"
             >
               Kairo is the world&apos;s first yield-generating payroll protocol.
-              Pay, earn, automate, and scale your global operations.
+              Seamlessly pay, earn yield, and manage your global workforce, all
+              in one secure platform.
             </motion.p>
+
+            <motion.div
+              {...fadeIn}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="flex gap-4"
+            >
+              <PrimaryButton
+                href="/waitlist"
+                variant="primary"
+                className="mt-4 text-white hover:bg-black/70 font-semibold px-5 text-base py-5 rounded-full"
+              >
+                Join Waitlist
+                <ArrowRightCircleIcon className="w-5 ml-2" />
+              </PrimaryButton>
+            </motion.div>
           </div>
 
-          {/* CTA Button */}
+          {/* Stats Grid */}
           <motion.div
             {...fadeIn}
-            transition={{ delay: 0.3 }}
-            className="flex gap-4"
-          >
-            <Link
-              href="/waitlist"
-              className="inline-flex items-center rounded-full bg-purple-600 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-purple-700"
-            >
-              Join Waitlist
-            </Link>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            {...fadeIn}
-            transition={{ delay: 0.4 }}
-            className="grid grid-cols-3 gap-4"
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6"
           >
             {stats.map((stat, index) => (
-              <motion.div
+              <div
                 key={index}
-                {...fadeIn}
-                transition={{ delay: 0.4 + index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
-                className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200"
+                className="rounded-lg bg-white/30 backdrop-blur-sm px-4 py-6 ring-1 ring-gray-200"
               >
-                <div className="text-xl font-bold text-gray-900">
+                <div className="font-semibold text-xl text-gray-900">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-500">{stat.label}</div>
-              </motion.div>
+                <div className="text-sm text-gray-600">{stat.label}</div>
+              </div>
             ))}
           </motion.div>
 
-          {/* Feature Carousel */}
+          {/* Flow Chart - Updated height classes */}
           <motion.div
             {...fadeIn}
-            transition={{ delay: 0.5 }}
-            className="relative h-[400px]"
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="relative h-[300px] sm:h-[400px] md:h-[450px] rounded-lg overflow-hidden bg-white/30 backdrop-blur-sm ring-1 ring-gray-200"
           >
-            <SleekVisual />
+            <FlowChart />
           </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

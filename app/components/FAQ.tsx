@@ -55,7 +55,7 @@ export default function FAQ() {
         </p>
       </div>
 
-      <div className="mt-16 space-y-4">
+      <div className="mt-16 space-y-0 rounded-xl overflow-hidden border border-gray-200">
         {faqs.map((faq, index) => (
           <motion.div
             key={index}
@@ -63,11 +63,13 @@ export default function FAQ() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="border-b border-gray-100 last:border-0"
+            className={`${
+              index % 2 === 0 ? "bg-white" : "bg-gray-50"
+            } border-b border-gray-200 last:border-0`}
           >
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="flex w-full items-center justify-between py-6 text-left"
+              className="flex w-full items-center justify-between py-6 px-6 text-left"
             >
               <span className="text-lg font-semibold text-gray-900">
                 {faq.question}
@@ -113,7 +115,7 @@ export default function FAQ() {
                   }}
                   className="overflow-hidden"
                 >
-                  <div className="pb-6">
+                  <div className="px-6 pb-6">
                     <p className="text-base text-gray-600">{faq.answer}</p>
                   </div>
                 </motion.div>

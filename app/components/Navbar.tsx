@@ -7,9 +7,9 @@ import PrimaryButton from "./shared/ui/PrimaryButton";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
-      <div className="max-w-[1100px] mx-auto px-6">
-        <div className="flex h-14 items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b max-w-[1100px] mx-auto">
+      <div className=" mx-auto px-6">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="block">
@@ -26,10 +26,7 @@ const Navbar = () => {
 
           {/* Navigation */}
           <div className="flex items-center gap-8 font-medium">
-            <PrimaryButton
-              href="/waitlist"
-              className="bg-purple-600 hover:bg-purple-700"
-            >
+            <PrimaryButton href="/waitlist" className="">
               Join Waitlist
             </PrimaryButton>
           </div>

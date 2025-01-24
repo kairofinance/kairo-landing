@@ -83,7 +83,7 @@ export default function RootLayout({
       <body className="bg-white text-gray-900 antialiased">
         <div className="min-h-screen flex flex-col">
           <Navbar />
-          <main className="flex-grow pt-20">
+          <main className="flex-grow">
             <Suspense fallback={<Spinner />}>{children}</Suspense>
           </main>
         </div>

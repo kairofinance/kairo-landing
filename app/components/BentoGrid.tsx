@@ -11,18 +11,18 @@ import { motion } from "framer-motion";
 
 export default function BentoGrid() {
   return (
-    <div className="py-24 sm:py-32">
-      <div className="mx-auto max-w-[1000px] px-6">
-        <div className="max-w-2xl">
+    <div className="relative py-12">
+      <div className="mx-auto max-w-[1100px] px-4 sm:px-6">
+        <div className="max-w-2xl text-center sm:text-left">
           <h2 className="text-base font-medium text-gray-900">
             Built for Modern Business
           </h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900">
+          <p className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
             Streamlined Payroll Management
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {/* Yield Generation Panel - Main Feature */}
           <motion.div
             className="relative lg:col-span-2"
@@ -31,7 +31,7 @@ export default function BentoGrid() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="rounded-2xl bg-black p-8">
+            <div className="rounded-2xl bg-black p-6 sm:p-8">
               <div className="flex flex-col">
                 <div className="flex items-center gap-4">
                   <div className="rounded-xl bg-white/10 p-2.5">
