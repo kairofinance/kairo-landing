@@ -258,7 +258,13 @@ export default function FlowChart() {
     };
 
     // Draw node function - updated styling
-    const drawNode = (x: number, y: number, label: string) => {
+    const drawNode = (
+      x: number,
+      y: number,
+      label: string,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      _fontSize: number
+    ) => {
       const { nodeRadius, fontSize, glowRadius } = getScaledSizes();
 
       // Outer glow
