@@ -137,7 +137,6 @@ export default function FlowChart() {
       canvas.style.height = `${displayHeight}px`;
 
       // Set actual size in memory (scaled for retina)
-      const dpr = window.devicePixelRatio || 1;
       canvas.width = displayWidth;
       canvas.height = displayHeight;
 
