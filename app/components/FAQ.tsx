@@ -23,7 +23,7 @@ const faqs = [
   {
     question: "What currencies do you support?",
     answer:
-      "We support 150+ fiat currencies and major cryptocurrencies. You can deposit in one currency and pay out in another, with real-time conversion at market rates.",
+      "We currently only support USD and major cryptocurrencies. You can deposit in one currency and pay out in another, with real-time conversion at market rates.",
   },
   {
     question: "How do you handle tax compliance?",
@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "What are the transaction fees?",
     answer:
-      "Each transaction costs $0.01, regardless of size. This includes currency conversion, yield generation, and payment processing.",
+      "Each transaction's fees is near-zero, regardless of size. This includes currency conversion, yield generation, and payment processing.",
   },
 ];
 

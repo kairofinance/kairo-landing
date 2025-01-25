@@ -45,9 +45,9 @@ export default function Home() {
       <main>
         <Hero />
         <SectionVisual />
-        <BentoGrid />
-        <SectionVisual />
         <Features />
+        <SectionVisual />
+        <BentoGrid />
         <CallToAction />
       </main>
       <Footer social={footerNavigation.social} />

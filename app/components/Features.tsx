@@ -66,7 +66,7 @@ const itemVariants = {
 export default function Features() {
   return (
     <>
-      <div className="relative mx-auto max-w-[1100px] px-6 py-12">
+      <div className="relative mx-auto max-w-[1100px] py-12">
         <div className="w-full">
           <div className="mx-auto max-w-[1100px] px-4 sm:px-6">
             {/* Header Section */}
@@ -85,7 +85,7 @@ export default function Features() {
 
             {/* Features List */}
             <motion.div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {features.map((feature, index) => (
+              {features.map((feature) => (
                 <motion.div
                   key={feature.name}
                   variants={itemVariants}
@@ -93,19 +93,12 @@ export default function Features() {
                 >
                   <div className="rounded-2xl border border-gray-200 bg-white p-6 transition-all duration-200 hover:shadow-lg">
                     <div className="flex items-center gap-4">
-                      <div
-                        className={`rounded-xl bg-gray-100 p-2.5 ${
-                          index === 0 || index === 3 ? "text-purple-600" : ""
-                        }`}
-                      >
+                      <div className={`rounded-xl bg-gray-100 p-2.5`}>
                         <feature.icon className="h-6 w-6" />
                       </div>
                       <h3
-                        className={`text-base font-semibold ${
-                          index === 0 || index === 3
-                            ? "text-purple-600"
-                            : "text-gray-900"
-                        }`}
+                        className={`text-base font-semibold text-gray-900"
+                        `}
                       >
                         {feature.name}
                       </h3>
